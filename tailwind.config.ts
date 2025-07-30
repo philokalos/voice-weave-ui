@@ -26,7 +26,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -61,7 +62,19 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				/* Voice Journal specific colors */
+				recording: 'hsl(var(--recording))',
+				waveform: 'hsl(var(--waveform))',
+				success: 'hsl(var(--success))',
+				warning: 'hsl(var(--warning))'
+			},
+			fontFamily: {
+				'inter': ['Inter', 'sans-serif'],
+			},
+			fontSize: {
+				'heading': ['1.25rem', '1.875rem'], /* 20px with 1.5x line height */
+				'large-button': ['2.75rem', '3rem'], /* 44px */
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

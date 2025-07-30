@@ -1,0 +1,20 @@
+{
+  "name": "Voice Journal - Mindful Voice Journaling",
+  "short_name": "Voice Journal",
+  "description": "Transform your thoughts into insights with Voice Journal - a mindful voice journaling app for daily reflection and growth.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#FF6F61",
+  "background_color": "#F0F0F0",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["lifestyle", "productivity", "health"],
+  "lang": "en-US",
+  "dir": "ltr"
+}
