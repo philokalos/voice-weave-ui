@@ -3,9 +3,8 @@ import { Calendar as CalendarIcon, List } from "lucide-react";
 import { AppHeader } from "@/components/layout/AppHeader";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { JournalCard } from "@/components/journal/JournalCard";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface DashboardProps {
   activeTab: 'home' | 'dashboard' | 'profile';
@@ -45,13 +44,14 @@ const mockEntries = [
 ];
 
 export const Dashboard = ({ activeTab, onTabChange }: DashboardProps) => {
+  const { t } = useLanguage();
   const [viewMode, setViewMode] = useState<'list' | 'calendar'>('list');
 
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <AppHeader 
-        title="Journal Timeline"
+        title={t('dashboard.title')}
         showMenu={false}
       />
 
@@ -66,7 +66,7 @@ export const Dashboard = ({ activeTab, onTabChange }: DashboardProps) => {
               className="flex items-center space-x-1"
             >
               <List className="h-4 w-4" />
-              <span>List</span>
+              <span>{t('dashboard.list')}</span>
             </Button>
             <Button
               variant={viewMode === 'calendar' ? 'default' : 'outline'}
@@ -75,7 +75,7 @@ export const Dashboard = ({ activeTab, onTabChange }: DashboardProps) => {
               className="flex items-center space-x-1"
             >
               <CalendarIcon className="h-4 w-4" />
-              <span>Calendar</span>
+              <span>{t('dashboard.calendar')}</span>
             </Button>
           </div>
         </div>
@@ -95,13 +95,13 @@ export const Dashboard = ({ activeTab, onTabChange }: DashboardProps) => {
               ))
             ) : (
               <div className="text-center py-12">
-                <p className="text-muted-foreground">No journal entries found</p>
+                <p className="text-muted-foreground">{t('dashboard.noEntries')}</p>
                 <Button 
                   variant="outline" 
                   className="mt-4"
                   onClick={() => onTabChange('home')}
                 >
-                  Create your first entry
+                  {t('dashboard.createFirst')}
                 </Button>
               </div>
             )}
@@ -109,7 +109,7 @@ export const Dashboard = ({ activeTab, onTabChange }: DashboardProps) => {
         ) : (
           <div className="text-center py-12">
             <CalendarIcon className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-            <p className="text-muted-foreground">Calendar view coming soon</p>
+            <p className="text-muted-foreground">{t('dashboard.calendarSoon')}</p>
           </div>
         )}
       </main>

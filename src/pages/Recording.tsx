@@ -7,6 +7,7 @@ import { RecordingTimer } from "@/components/recording/RecordingTimer";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Mic, Keyboard } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface RecordingProps {
   activeTab: 'home' | 'dashboard' | 'profile';
@@ -14,6 +15,7 @@ interface RecordingProps {
 }
 
 export const Recording = ({ activeTab, onTabChange }: RecordingProps) => {
+  const { t } = useLanguage();
   const [isRecording, setIsRecording] = useState(false);
   const [recordingTime, setRecordingTime] = useState(0);
   const [inputMode, setInputMode] = useState<'voice' | 'text'>('voice');
@@ -34,10 +36,7 @@ export const Recording = ({ activeTab, onTabChange }: RecordingProps) => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <AppHeader 
-        title="Voice Journal"
-        showMenu={false}
-      />
+      <AppHeader title={t('recording.title')} showMenu={false} />
 
       {/* Main recording area */}
       <main className="flex-1 flex flex-col items-center justify-center px-6 pb-24">
@@ -53,7 +52,7 @@ export const Recording = ({ activeTab, onTabChange }: RecordingProps) => {
               }`}
             >
               <Mic className="h-4 w-4" />
-              Voice
+              {t('recording.voiceMode')}
             </button>
             <button
               onClick={() => setInputMode('text')}
@@ -64,7 +63,7 @@ export const Recording = ({ activeTab, onTabChange }: RecordingProps) => {
               }`}
             >
               <Keyboard className="h-4 w-4" />
-              Text
+              {t('recording.textMode')}
             </button>
           </div>
 
@@ -132,7 +131,7 @@ export const Recording = ({ activeTab, onTabChange }: RecordingProps) => {
               </div>
 
               <Textarea
-                placeholder="What went well today? What could be improved? What are your goals for tomorrow?"
+                placeholder={t('recording.textPlaceholder')}
                 value={textInput}
                 onChange={(e) => setTextInput(e.target.value)}
                 className="min-h-[200px] resize-none"
@@ -146,7 +145,7 @@ export const Recording = ({ activeTab, onTabChange }: RecordingProps) => {
                   setTextInput('');
                 }}
               >
-                Save Journal Entry
+                {t('recording.saveEntry')}
               </Button>
             </div>
           )}

@@ -1,6 +1,7 @@
 import { Calendar, Clock, Hash } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface JournalEntry {
   id: string;
@@ -19,6 +20,7 @@ interface JournalCardProps {
 }
 
 export const JournalCard = ({ entry, onClick }: JournalCardProps) => {
+  const { t } = useLanguage();
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       month: 'short',
@@ -63,7 +65,7 @@ export const JournalCard = ({ entry, onClick }: JournalCardProps) => {
 
         {entry.wellDone.length > 0 && (
           <div>
-            <h4 className="text-sm font-medium text-success mb-2">Things I Did Well</h4>
+            <h4 className="text-sm font-medium text-success mb-2">{t('journal.wellDone')}</h4>
             <p className="text-sm line-clamp-2">{entry.wellDone[0]}</p>
             {entry.wellDone.length > 1 && (
               <span className="text-xs text-muted-foreground">
