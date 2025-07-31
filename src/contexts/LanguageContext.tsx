@@ -16,7 +16,7 @@ const translations = {
     'nav.profile': '프로필',
     
     // Recording Page
-    'recording.title': 'Voice Journal',
+    'recording.title': '음성 저널',
     'recording.voiceMode': '음성 모드',
     'recording.textMode': '텍스트 모드',
     'recording.startRecording': '기록 시작',
@@ -24,14 +24,17 @@ const translations = {
     'recording.textPlaceholder': '오늘의 생각을 적어보세요...',
     'recording.saveEntry': '저널 저장',
     'recording.timer': '기록 시간',
+    'recording.recording': '녹음 중...',
+    'recording.startRecordingAria': '기록 시작',
+    'recording.stopRecordingAria': '기록 중지',
     
     // Dashboard Page
-    'dashboard.title': 'Journal Timeline',
-    'dashboard.list': 'List',
-    'dashboard.calendar': 'Calendar',
-    'dashboard.calendarSoon': 'Calendar view coming soon',
-    'dashboard.noEntries': 'No journal entries found',
-    'dashboard.createFirst': 'Create your first entry',
+    'dashboard.title': '저널 타임라인',
+    'dashboard.list': '목록',
+    'dashboard.calendar': '달력',
+    'dashboard.calendarSoon': '달력 보기 준비 중',
+    'dashboard.noEntries': '저널 기록이 없습니다',
+    'dashboard.createFirst': '첫 번째 기록 만들기',
     
     // Profile Page
     'profile.title': '프로필',
@@ -67,6 +70,8 @@ const translations = {
     'common.entries': '개',
     'common.days': '일',
     'common.minutes': '분',
+    'common.openMenu': '메뉴 열기',
+    'common.voiceJournal': '음성 저널',
   },
   en: {
     // Navigation
@@ -83,6 +88,9 @@ const translations = {
     'recording.textPlaceholder': 'Write your thoughts for today...',
     'recording.saveEntry': 'Save Journal Entry',
     'recording.timer': 'Recording Time',
+    'recording.recording': 'Recording...',
+    'recording.startRecordingAria': 'Start recording',
+    'recording.stopRecordingAria': 'Stop recording',
     
     // Dashboard Page
     'dashboard.title': 'Journal Timeline',
@@ -126,6 +134,8 @@ const translations = {
     'common.entries': 'entries',
     'common.days': 'days',
     'common.minutes': 'min',
+    'common.openMenu': 'Open menu',
+    'common.voiceJournal': 'Voice Journal',
   }
 };
 
