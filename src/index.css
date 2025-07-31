@@ -8,52 +8,52 @@
 
 @layer base {
   :root {
-    /* Voice Journal Brand Colors */
-    --background: 0 0% 94%;  /* #F0F0F0 */
-    --foreground: 0 0% 20%;
+    /* Lovable Brand Colors */
+    --background: 0 0% 98%;  /* #FAFAFA */
+    --foreground: 240 10% 3.9%;
     
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
     
-    --popover: 0 0% 98%;
-    --popover-foreground: 0 0% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
     
-    /* Warm coral primary */
-    --primary: 9 100% 69%;  /* #FF6F61 */
+    /* Lovable purple primary */
+    --primary: 262 83% 58%;  /* #8B5CF6 */
     --primary-foreground: 0 0% 98%;
-    --primary-glow: 9 100% 75%;
+    --primary-glow: 262 83% 68%;
     
-    /* Soft blue secondary */
-    --secondary: 208 26% 84%;  /* #AEC6CF */
-    --secondary-foreground: 0 0% 20%;
+    /* Lovable secondary */
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 222.2 84% 4.9%;
     
-    --muted: 0 0% 83%;  /* #D3D3D3 */
-    --muted-foreground: 0 0% 45%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
     
-    --accent: 208 26% 84%;
-    --accent-foreground: 0 0% 20%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
     
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
     
-    --border: 0 0% 83%;
-    --input: 0 0% 98%;
-    --ring: 9 100% 69%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 262 83% 58%;
     
-    --success: 120 60% 70%;  /* #77DD77 friendly green */
-    --warning: 45 100% 60%;
+    --success: 142 76% 36%;  /* #16A34A */
+    --warning: 38 92% 50%;
     
     /* Voice Journal specific tokens */
-    --recording: 0 100% 65%;  /* Recording state red */
-    --waveform: 9 100% 69%;
-    --journal-card: 0 0% 98%;
+    --recording: 262 83% 58%;  /* Recording state purple */
+    --waveform: 262 83% 58%;
+    --journal-card: 0 0% 100%;
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
     --gradient-recording: linear-gradient(135deg, hsl(var(--recording)), hsl(var(--primary)));
     
     /* Shadows */
-    --shadow-card: 0 4px 20px hsl(var(--primary) / 0.08);
+    --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     --shadow-button: 0 2px 8px hsl(var(--primary) / 0.15);
     --shadow-recording: 0 0 40px hsl(var(--recording) / 0.3);
     
@@ -81,48 +81,48 @@
   }
 
   .dark {
-    /* Dark mode Voice Journal */
-    --background: 0 0% 10%;  /* #1A1A1A */
-    --foreground: 0 0% 95%;
+    /* Dark mode Lovable */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
     
-    --card: 0 0% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
     
-    --popover: 0 0% 12%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
     
-    /* Keep warm coral primary in dark mode */
-    --primary: 9 100% 69%;  /* #FF6F61 */
-    --primary-foreground: 0 0% 10%;
-    --primary-glow: 9 100% 75%;
+    /* Keep Lovable purple primary in dark mode */
+    --primary: 262 83% 58%;  /* #8B5CF6 */
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 262 83% 68%;
     
     /* Darker secondary */
-    --secondary: 208 15% 25%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
     
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
     
-    --accent: 208 15% 25%;
-    --accent-foreground: 0 0% 95%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
     
-    --destructive: 0 75% 55%;
-    --destructive-foreground: 0 0% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
     
-    --border: 0 0% 20%;
-    --input: 0 0% 15%;
-    --ring: 9 100% 69%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 262 83% 58%;
     
-    --success: 120 50% 65%;
-    --warning: 45 90% 55%;
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
     
     /* Dark mode specific tokens */
-    --recording: 0 100% 65%;
-    --waveform: 9 100% 69%;
-    --journal-card: 0 0% 12%;
+    --recording: 262 83% 58%;
+    --waveform: 262 83% 58%;
+    --journal-card: 222.2 84% 4.9%;
     
     /* Dark mode shadows */
-    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.25);
+    --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     --shadow-button: 0 2px 8px hsl(var(--primary) / 0.2);
     --shadow-recording: 0 0 40px hsl(var(--recording) / 0.4);
     --sidebar-background: 240 5.9% 10%;
