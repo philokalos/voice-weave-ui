@@ -10,8 +10,8 @@ import { Badge } from "@/components/ui/badge";
 import { Edit2, Calendar, Mic, FileText } from "lucide-react";
 
 interface ProfileProps {
-  activeTab: 'home' | 'dashboard' | 'search' | 'profile';
-  onTabChange: (tab: 'home' | 'dashboard' | 'search' | 'profile') => void;
+  activeTab: 'home' | 'dashboard' | 'profile';
+  onTabChange: (tab: 'home' | 'dashboard' | 'profile') => void;
 }
 
 export const Profile = ({ activeTab, onTabChange }: ProfileProps) => {

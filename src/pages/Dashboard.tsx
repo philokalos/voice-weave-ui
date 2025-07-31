@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, Filter, Calendar as CalendarIcon, List } from "lucide-react";
+import { Filter, Calendar as CalendarIcon, List } from "lucide-react";
 import { AppHeader } from "@/components/layout/AppHeader";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { JournalCard } from "@/components/journal/JournalCard";
@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 interface DashboardProps {
-  activeTab: 'home' | 'dashboard' | 'search' | 'profile';
-  onTabChange: (tab: 'home' | 'dashboard' | 'search' | 'profile') => void;
+  activeTab: 'home' | 'dashboard' | 'profile';
+  onTabChange: (tab: 'home' | 'dashboard' | 'profile') => void;
 }
 
 // Mock data for demonstration
@@ -45,7 +45,6 @@ const mockEntries = [
 ];
 
 export const Dashboard = ({ activeTab, onTabChange }: DashboardProps) => {
-  const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<'list' | 'calendar'>('list');
   const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
 
@@ -55,16 +54,10 @@ export const Dashboard = ({ activeTab, onTabChange }: DashboardProps) => {
   );
 
   const filteredEntries = mockEntries.filter(entry => {
-    const matchesSearch = entry.wellDone.some(item => 
-      item.toLowerCase().includes(searchQuery.toLowerCase())
-    ) || entry.keywords.some(keyword => 
-      keyword.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    
     const matchesKeywords = selectedKeywords.length === 0 || 
       selectedKeywords.some(keyword => entry.keywords.includes(keyword));
     
-    return (searchQuery === '' || matchesSearch) && matchesKeywords;
+    return matchesKeywords;
   });
 
   const toggleKeyword = (keyword: string) => {
@@ -83,18 +76,8 @@ export const Dashboard = ({ activeTab, onTabChange }: DashboardProps) => {
         showSettings={true}
       />
 
-      {/* Search and filters */}
+      {/* Filters */}
       <div className="px-4 py-4 space-y-4 border-b border-border">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder="Search your reflections..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10"
-          />
-        </div>
-
         {/* View mode toggle */}
         <div className="flex items-center justify-between">
           <div className="flex space-x-2">

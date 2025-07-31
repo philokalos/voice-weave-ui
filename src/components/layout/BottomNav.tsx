@@ -1,17 +1,16 @@
-import { Home, Calendar, Search, User } from "lucide-react";
+import { Home, Calendar, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface BottomNavProps {
-  activeTab: 'home' | 'dashboard' | 'search' | 'profile';
-  onTabChange: (tab: 'home' | 'dashboard' | 'search' | 'profile') => void;
+  activeTab: 'home' | 'dashboard' | 'profile';
+  onTabChange: (tab: 'home' | 'dashboard' | 'profile') => void;
 }
 
 export const BottomNav = ({ activeTab, onTabChange }: BottomNavProps) => {
   const tabs = [
     { id: 'home' as const, icon: Home, label: 'Record' },
     { id: 'dashboard' as const, icon: Calendar, label: 'Journal' },
-    { id: 'search' as const, icon: Search, label: 'Search' },
     { id: 'profile' as const, icon: User, label: 'Profile' },
   ];
 

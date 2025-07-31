@@ -9,8 +9,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mic, Keyboard } from "lucide-react";
 
 interface RecordingProps {
-  activeTab: 'home' | 'dashboard' | 'search' | 'profile';
-  onTabChange: (tab: 'home' | 'dashboard' | 'search' | 'profile') => void;
+  activeTab: 'home' | 'dashboard' | 'profile';
+  onTabChange: (tab: 'home' | 'dashboard' | 'profile') => void;
 }
 
 export const Recording = ({ activeTab, onTabChange }: RecordingProps) => {

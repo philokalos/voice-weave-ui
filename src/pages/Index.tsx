@@ -6,7 +6,7 @@ import { Profile } from "./Profile";
 
 const Index = () => {
   const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
-  const [activeTab, setActiveTab] = useState<'home' | 'dashboard' | 'search' | 'profile'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'dashboard' | 'profile'>('home');
 
   // Check if user has completed onboarding
   useEffect(() => {
@@ -28,15 +28,6 @@ const Index = () => {
   switch (activeTab) {
     case 'dashboard':
       return <Dashboard activeTab={activeTab} onTabChange={setActiveTab} />;
-    case 'search':
-      return (
-        <div className="min-h-screen bg-background flex items-center justify-center">
-          <div className="text-center">
-            <h2 className="text-heading mb-4">Search Feature</h2>
-            <p className="text-muted-foreground">Coming soon...</p>
-          </div>
-        </div>
-      );
     case 'profile':
       return <Profile activeTab={activeTab} onTabChange={setActiveTab} />;
     default:
