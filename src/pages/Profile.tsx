@@ -7,7 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { Edit2, Calendar, Mic, FileText, Bell, Download, Shield, LogOut, Moon, Volume2 } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Edit2, Calendar, Mic, FileText, Bell, Download, Shield, LogOut, Moon, Volume2, Globe } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ProfileProps {
   activeTab: 'home' | 'dashboard' | 'profile';
@@ -15,11 +17,12 @@ interface ProfileProps {
 }
 
 export const Profile = ({ activeTab, onTabChange }: ProfileProps) => {
+  const { t, language, setLanguage } = useLanguage();
   const [isEditing, setIsEditing] = useState(false);
   const [userInfo, setUserInfo] = useState({
-    name: "사용자",
+    name: t('common.user'),
     email: "user@example.com",
-    joinedDate: "2024년 1월"
+    joinedDate: language === 'ko' ? "2024년 1월" : "January 2024"
   });
 
   const stats = {
@@ -36,7 +39,7 @@ export const Profile = ({ activeTab, onTabChange }: ProfileProps) => {
 
   return (
     <div className="min-h-screen bg-background pb-20">
-      <AppHeader title="프로필" />
+      <AppHeader title={t('profile.title')} />
       
       <div className="p-4 space-y-6">
         {/* User Info Card */}
@@ -54,7 +57,7 @@ export const Profile = ({ activeTab, onTabChange }: ProfileProps) => {
             {isEditing ? (
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="name">이름</Label>
+                  <Label htmlFor="name">{t('profile.name')}</Label>
                   <Input
                     id="name"
                     value={userInfo.name}
@@ -62,7 +65,7 @@ export const Profile = ({ activeTab, onTabChange }: ProfileProps) => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="email">이메일</Label>
+                  <Label htmlFor="email">{t('profile.email')}</Label>
                   <Input
                     id="email"
                     type="email"
@@ -72,10 +75,10 @@ export const Profile = ({ activeTab, onTabChange }: ProfileProps) => {
                 </div>
                 <div className="flex gap-2">
                   <Button onClick={handleSave} className="flex-1">
-                    저장
+                    {t('profile.save')}
                   </Button>
                   <Button variant="outline" onClick={() => setIsEditing(false)} className="flex-1">
-                    취소
+                    {t('profile.cancel')}
                   </Button>
                 </div>
               </div>
@@ -85,7 +88,7 @@ export const Profile = ({ activeTab, onTabChange }: ProfileProps) => {
                 <p className="text-muted-foreground">{userInfo.email}</p>
                 <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
                   <Calendar className="h-4 w-4" />
-                  {userInfo.joinedDate}부터 시작
+                  {userInfo.joinedDate} {t('profile.joinedSince')}
                 </p>
                 <Button
                   variant="ghost"
@@ -94,7 +97,7 @@ export const Profile = ({ activeTab, onTabChange }: ProfileProps) => {
                   className="mt-2"
                 >
                   <Edit2 className="h-4 w-4 mr-2" />
-                  편집
+                  {t('profile.edit')}
                 </Button>
               </div>
             )}
@@ -104,17 +107,17 @@ export const Profile = ({ activeTab, onTabChange }: ProfileProps) => {
         {/* Stats Card */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">저널 통계</CardTitle>
+            <CardTitle className="text-lg">{t('profile.stats')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center p-3 bg-primary/5 rounded-lg">
                 <p className="text-2xl font-bold text-primary">{stats.totalEntries}</p>
-                <p className="text-sm text-muted-foreground">총 기록</p>
+                <p className="text-sm text-muted-foreground">{t('profile.totalEntries')}</p>
               </div>
               <div className="text-center p-3 bg-secondary/20 rounded-lg">
                 <p className="text-2xl font-bold text-secondary-foreground">{stats.streakDays}</p>
-                <p className="text-sm text-muted-foreground">연속 기록</p>
+                <p className="text-sm text-muted-foreground">{t('profile.streakDays')}</p>
               </div>
             </div>
             
@@ -122,16 +125,16 @@ export const Profile = ({ activeTab, onTabChange }: ProfileProps) => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Mic className="h-4 w-4 text-primary" />
-                  <span className="text-sm">음성 기록</span>
+                  <span className="text-sm">{t('profile.voiceEntries')}</span>
                 </div>
-                <Badge variant="secondary">{stats.voiceEntries}개</Badge>
+                <Badge variant="secondary">{stats.voiceEntries}{t('common.entries')}</Badge>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <FileText className="h-4 w-4 text-primary" />
-                  <span className="text-sm">텍스트 기록</span>
+                  <span className="text-sm">{t('profile.textEntries')}</span>
                 </div>
-                <Badge variant="secondary">{stats.textEntries}개</Badge>
+                <Badge variant="secondary">{stats.textEntries}{t('common.entries')}</Badge>
               </div>
             </div>
           </CardContent>
@@ -140,32 +143,46 @@ export const Profile = ({ activeTab, onTabChange }: ProfileProps) => {
         {/* Settings */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">설정</CardTitle>
+            <CardTitle className="text-lg">{t('profile.settings')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2">
             <Button variant="ghost" className="w-full justify-start">
               <Bell className="h-4 w-4 mr-3" />
-              알림 설정
+              {t('profile.notifications')}
             </Button>
             <Button variant="ghost" className="w-full justify-start">
               <Moon className="h-4 w-4 mr-3" />
-              다크 모드
+              {t('profile.darkMode')}
             </Button>
             <Button variant="ghost" className="w-full justify-start">
               <Volume2 className="h-4 w-4 mr-3" />
-              음성 설정
+              {t('profile.voiceSettings')}
             </Button>
+            <div className="flex items-center justify-between px-3 py-2">
+              <div className="flex items-center gap-3">
+                <Globe className="h-4 w-4" />
+                <span className="text-sm">{t('profile.language')}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-muted-foreground">한글</span>
+                <Switch 
+                  checked={language === 'en'}
+                  onCheckedChange={(checked) => setLanguage(checked ? 'en' : 'ko')}
+                />
+                <span className="text-sm text-muted-foreground">English</span>
+              </div>
+            </div>
             <Button variant="ghost" className="w-full justify-start">
               <Download className="h-4 w-4 mr-3" />
-              백업 및 동기화
+              {t('profile.backup')}
             </Button>
             <Button variant="ghost" className="w-full justify-start">
               <Shield className="h-4 w-4 mr-3" />
-              개인정보 처리방침
+              {t('profile.privacy')}
             </Button>
             <Button variant="ghost" className="w-full justify-start text-destructive">
               <LogOut className="h-4 w-4 mr-3" />
-              로그아웃
+              {t('profile.logout')}
             </Button>
           </CardContent>
         </Card>
