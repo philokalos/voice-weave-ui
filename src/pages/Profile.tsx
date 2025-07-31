@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { Edit2, Calendar, Mic, FileText } from "lucide-react";
+import { Edit2, Calendar, Mic, FileText, Bell, Download, Shield, LogOut, Moon, Volume2 } from "lucide-react";
 
 interface ProfileProps {
   activeTab: 'home' | 'dashboard' | 'profile';
@@ -144,15 +144,27 @@ export const Profile = ({ activeTab, onTabChange }: ProfileProps) => {
           </CardHeader>
           <CardContent className="space-y-2">
             <Button variant="ghost" className="w-full justify-start">
+              <Bell className="h-4 w-4 mr-3" />
               알림 설정
             </Button>
             <Button variant="ghost" className="w-full justify-start">
+              <Moon className="h-4 w-4 mr-3" />
+              다크 모드
+            </Button>
+            <Button variant="ghost" className="w-full justify-start">
+              <Volume2 className="h-4 w-4 mr-3" />
+              음성 설정
+            </Button>
+            <Button variant="ghost" className="w-full justify-start">
+              <Download className="h-4 w-4 mr-3" />
               백업 및 동기화
             </Button>
             <Button variant="ghost" className="w-full justify-start">
+              <Shield className="h-4 w-4 mr-3" />
               개인정보 처리방침
             </Button>
             <Button variant="ghost" className="w-full justify-start text-destructive">
+              <LogOut className="h-4 w-4 mr-3" />
               로그아웃
             </Button>
           </CardContent>

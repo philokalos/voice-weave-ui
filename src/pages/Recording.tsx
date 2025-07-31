@@ -37,7 +37,6 @@ export const Recording = ({ activeTab, onTabChange }: RecordingProps) => {
       <AppHeader 
         title="Voice Journal"
         showMenu={false}
-        showSettings={true}
       />
 
       {/* Main recording area */}

@@ -73,7 +73,6 @@ export const Dashboard = ({ activeTab, onTabChange }: DashboardProps) => {
       <AppHeader 
         title="Journal Timeline"
         showMenu={false}
-        showSettings={true}
       />
 
       {/* Filters */}
