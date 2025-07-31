@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Recording } from "./Recording";
 import { Dashboard } from "./Dashboard";
 import { Onboarding } from "./Onboarding";
+import { Profile } from "./Profile";
 
 const Index = () => {
   const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
@@ -37,14 +38,7 @@ const Index = () => {
         </div>
       );
     case 'profile':
-      return (
-        <div className="min-h-screen bg-background flex items-center justify-center">
-          <div className="text-center">
-            <h2 className="text-heading mb-4">Profile</h2>
-            <p className="text-muted-foreground">Coming soon...</p>
-          </div>
-        </div>
-      );
+      return <Profile activeTab={activeTab} onTabChange={setActiveTab} />;
     default:
       return <Recording activeTab={activeTab} onTabChange={setActiveTab} />;
   }
