@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Filter, Calendar as CalendarIcon, List } from "lucide-react";
+import { Calendar as CalendarIcon, List } from "lucide-react";
 import { AppHeader } from "@/components/layout/AppHeader";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { JournalCard } from "@/components/journal/JournalCard";
@@ -46,27 +46,7 @@ const mockEntries = [
 
 export const Dashboard = ({ activeTab, onTabChange }: DashboardProps) => {
   const [viewMode, setViewMode] = useState<'list' | 'calendar'>('list');
-  const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
 
-  // Get all unique keywords for filtering
-  const allKeywords = Array.from(
-    new Set(mockEntries.flatMap(entry => entry.keywords))
-  );
-
-  const filteredEntries = mockEntries.filter(entry => {
-    const matchesKeywords = selectedKeywords.length === 0 || 
-      selectedKeywords.some(keyword => entry.keywords.includes(keyword));
-    
-    return matchesKeywords;
-  });
-
-  const toggleKeyword = (keyword: string) => {
-    setSelectedKeywords(prev => 
-      prev.includes(keyword) 
-        ? prev.filter(k => k !== keyword)
-        : [...prev, keyword]
-    );
-  };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -75,10 +55,9 @@ export const Dashboard = ({ activeTab, onTabChange }: DashboardProps) => {
         showMenu={false}
       />
 
-      {/* Filters */}
-      <div className="px-4 py-4 space-y-4 border-b border-border">
-        {/* View mode toggle */}
-        <div className="flex items-center justify-between">
+      {/* View mode toggle */}
+      <div className="px-4 py-4 border-b border-border">
+        <div className="flex items-center justify-center">
           <div className="flex space-x-2">
             <Button
               variant={viewMode === 'list' ? 'default' : 'outline'}
@@ -99,25 +78,6 @@ export const Dashboard = ({ activeTab, onTabChange }: DashboardProps) => {
               <span>Calendar</span>
             </Button>
           </div>
-          
-          <Button variant="outline" size="sm" className="flex items-center space-x-1">
-            <Filter className="h-4 w-4" />
-            <span>Filter</span>
-          </Button>
-        </div>
-
-        {/* Keyword filters */}
-        <div className="flex flex-wrap gap-2">
-          {allKeywords.map(keyword => (
-            <Badge
-              key={keyword}
-              variant={selectedKeywords.includes(keyword) ? 'default' : 'outline'}
-              className="cursor-pointer hover:bg-primary/10"
-              onClick={() => toggleKeyword(keyword)}
-            >
-              {keyword}
-            </Badge>
-          ))}
         </div>
       </div>
 
@@ -125,8 +85,8 @@ export const Dashboard = ({ activeTab, onTabChange }: DashboardProps) => {
       <main className="flex-1 px-4 py-4 pb-24">
         {viewMode === 'list' ? (
           <div className="space-y-4">
-            {filteredEntries.length > 0 ? (
-              filteredEntries.map(entry => (
+            {mockEntries.length > 0 ? (
+              mockEntries.map(entry => (
                 <JournalCard
                   key={entry.id}
                   entry={entry}
