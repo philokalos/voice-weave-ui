@@ -1,0 +1,314 @@
+{
+  "appMetadata": {
+    "name": "Voice Journal",
+    "description": "Mindful Voice Journaling App",
+    "type": "Single Page Application (SPA)",
+    "framework": "React + TypeScript",
+    "styling": "Tailwind CSS + Shadcn/ui"
+  },
+  "navigation": {
+    "type": "Bottom Navigation",
+    "tabs": [
+      {
+        "id": "home",
+        "label": "Record",
+        "icon": "Home",
+        "component": "Recording"
+      },
+      {
+        "id": "dashboard", 
+        "label": "Journal",
+        "icon": "Calendar",
+        "component": "Dashboard"
+      },
+      {
+        "id": "profile",
+        "label": "Profile", 
+        "icon": "User",
+        "component": "Profile"
+      }
+    ]
+  },
+  "pages": {
+    "onboarding": {
+      "purpose": "First-time user experience",
+      "layout": "Full screen slides",
+      "components": [
+        {
+          "type": "Header",
+          "elements": ["App title", "Skip button"]
+        },
+        {
+          "type": "SlideCard",
+          "elements": [
+            "Feature icon",
+            "Title text",
+            "Description text", 
+            "Progress indicators"
+          ]
+        },
+        {
+          "type": "Navigation",
+          "elements": [
+            "Next/Get Started button",
+            "Social login options (Google, Apple, Email)"
+          ]
+        }
+      ],
+      "slides": [
+        {
+          "icon": "Mic",
+          "title": "Speak Your Mind",
+          "description": "Transform your thoughts into insights with natural voice journaling"
+        },
+        {
+          "icon": "Heart", 
+          "title": "Daily Reflection",
+          "description": "Build a mindful habit by reflecting on daily experiences"
+        },
+        {
+          "icon": "Target",
+          "title": "Track Your Growth", 
+          "description": "Watch patterns emerge and celebrate your progress"
+        }
+      ]
+    },
+    "recording": {
+      "purpose": "Main recording interface (Home)",
+      "layout": "Centered with header and bottom nav",
+      "components": [
+        {
+          "type": "AppHeader",
+          "elements": ["Page title"]
+        },
+        {
+          "type": "InputModeToggle",
+          "elements": ["Voice mode button", "Text mode button"]
+        },
+        {
+          "type": "VoiceMode",
+          "elements": [
+            "Status text",
+            "Recording timer",
+            "Waveform visualization", 
+            "Microphone button",
+            "Instruction text"
+          ]
+        },
+        {
+          "type": "TextMode",
+          "elements": [
+            "Title text",
+            "Description text",
+            "Textarea input",
+            "Save button"
+          ]
+        },
+        {
+          "type": "BottomNav",
+          "elements": ["Navigation tabs"]
+        }
+      ],
+      "states": {
+        "idle": "Ready to record state with instructions",
+        "recording": "Active recording with timer and waveform", 
+        "textInput": "Text entry mode with textarea"
+      }
+    },
+    "dashboard": {
+      "purpose": "View journal entries",
+      "layout": "List view with header and filters",
+      "components": [
+        {
+          "type": "AppHeader",
+          "elements": ["Page title"]
+        },
+        {
+          "type": "ViewModeToggle", 
+          "elements": ["List view button", "Calendar view button"]
+        },
+        {
+          "type": "JournalList",
+          "elements": ["Journal entry cards", "Empty state"]
+        },
+        {
+          "type": "BottomNav",
+          "elements": ["Navigation tabs"]
+        }
+      ],
+      "journalCard": {
+        "elements": [
+          "Date and duration header",
+          "Entry summary text",
+          "Well done section preview", 
+          "Keywords badges"
+        ]
+      }
+    },
+    "profile": {
+      "purpose": "User profile and app settings",
+      "layout": "Cards layout with user info and settings",
+      "components": [
+        {
+          "type": "AppHeader",
+          "elements": ["Page title"]
+        },
+        {
+          "type": "UserInfoCard",
+          "elements": [
+            "Avatar image",
+            "User name (editable)",
+            "Email (editable)", 
+            "Join date",
+            "Edit/Save buttons"
+          ]
+        },
+        {
+          "type": "StatsCard",
+          "elements": [
+            "Total entries count",
+            "Streak days count",
+            "Voice entries breakdown",
+            "Text entries breakdown"
+          ]
+        },
+        {
+          "type": "SettingsCard",
+          "elements": [
+            "Notifications settings",
+            "Dark mode toggle",
+            "Voice settings",
+            "Language toggle (Korean/English)",
+            "Backup options", 
+            "Privacy policy",
+            "Logout button"
+          ]
+        },
+        {
+          "type": "BottomNav",
+          "elements": ["Navigation tabs"]
+        }
+      ]
+    }
+  },
+  "sharedComponents": {
+    "layout": {
+      "AppHeader": {
+        "props": ["title", "showMenu", "onMenuClick"],
+        "elements": ["Menu button (optional)", "Title text"]
+      },
+      "BottomNav": {
+        "props": ["activeTab", "onTabChange"],
+        "elements": ["Tab buttons with icons and labels"]
+      }
+    },
+    "recording": {
+      "MicrophoneButton": {
+        "props": ["isRecording", "onToggleRecording"],
+        "elements": ["Mic/Stop icon", "Recording status indicator"]
+      },
+      "RecordingTimer": {
+        "props": ["isRecording", "onTimeUpdate"],
+        "elements": ["Timer display"]
+      },
+      "Waveform": {
+        "props": ["isActive"],
+        "elements": ["Animated waveform visualization"]
+      }
+    },
+    "journal": {
+      "JournalCard": {
+        "props": ["entry", "onClick"],
+        "elements": [
+          "Date and duration header",
+          "Entry summary",
+          "Well done preview",
+          "Keywords badges"
+        ]
+      }
+    }
+  },
+  "uiComponents": {
+    "primitives": [
+      "Button (variants: default, outline, ghost, destructive)",
+      "Card (with CardHeader, CardContent)",
+      "Input (text, email types)",
+      "Textarea",
+      "Label",
+      "Badge (variants: default, secondary, outline)",
+      "Avatar (with AvatarImage, AvatarFallback)",
+      "Switch",
+      "Progress",
+      "Separator"
+    ],
+    "compound": [
+      "Alert Dialog",
+      "Dialog", 
+      "Popover",
+      "Hover Card",
+      "Tooltip",
+      "Collapsible",
+      "Checkbox"
+    ]
+  },
+  "designSystem": {
+    "colorTokens": [
+      "primary", "secondary", "muted", "accent",
+      "foreground", "background", "border",
+      "success", "warning", "destructive"
+    ],
+    "layout": {
+      "spacing": "Tailwind spacing scale",
+      "breakpoints": "Mobile-first responsive design",
+      "safeAreas": "Mobile safe area support"
+    },
+    "interactions": {
+      "animations": "Tailwind CSS animate utilities",
+      "transitions": "Smooth hover and focus states",
+      "gestures": "Touch-friendly tap targets"
+    }
+  },
+  "features": {
+    "internationalization": {
+      "languages": ["Korean (ko)", "English (en)"],
+      "context": "LanguageProvider with translations",
+      "persistence": "localStorage for language preference"
+    },
+    "stateManagement": {
+      "local": "React useState hooks",
+      "persistence": "localStorage for onboarding and language",
+      "global": "Context API for language"
+    },
+    "accessibility": {
+      "features": [
+        "ARIA labels on interactive elements",
+        "Semantic HTML structure", 
+        "Keyboard navigation support",
+        "Screen reader friendly"
+      ]
+    }
+  },
+  "dataStructure": {
+    "journalEntry": {
+      "id": "string",
+      "date": "string (ISO date)",
+      "wellDone": "string[]",
+      "regrets": "string[]", 
+      "tomorrow": "string[]",
+      "keywords": "string[]",
+      "duration": "number (seconds)",
+      "summary": "string (optional)"
+    },
+    "userProfile": {
+      "name": "string",
+      "email": "string",
+      "joinedDate": "string",
+      "stats": {
+        "totalEntries": "number",
+        "voiceEntries": "number", 
+        "textEntries": "number",
+        "streakDays": "number"
+      }
+    }
+  }
+}
